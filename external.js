@@ -9,8 +9,6 @@ const getComputerChoice = () =>{
     }else{
         choice ='scissors';
     }
+    console.log(`Computer choice: ${choice}`);
     return choice;
 }
-
-getComputerChoice();
-

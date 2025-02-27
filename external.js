@@ -21,57 +21,63 @@ const getHumanChoice = () =>{
     return choice;
 }
 
-let humanScore = 0;
-let computerScore = 0;
+const playGame = ()=>{
+        
+    let humanScore = 0;
+    let computerScore = 0;
 
-const playRound = (humanChoice, computerChoice) => {
-    
-    const rules = (choiceOne, choiceTwo)=>{
-        switch (choiceOne){
-            case "rock":
-                if (choiceTwo === "scissors"){
-                    return 1;
-                }else if (choiceTwo === choiceOne){
-                    return 0;
-                }else if (choiceTwo === "paper"){
-                    return -1;
-                }
-            case "paper":
-                if (choiceTwo === "rock"){
-                    return 1;
-                }else if (choiceTwo === choiceOne){
-                    return 0;
-                }else if (choiceTwo === "scissors"){
-                    return -1;
-                }
-            case "scissors":
-                if (choiceTwo === "paper"){
-                    return 1;
-                }else if (choiceTwo === choiceOne){
-                    return 0;
-                }else if (choiceTwo === "rock"){
-                    return -1;
-                }
-        } 
+    const playRound = (humanChoice, computerChoice) => {
+        
+        const rules = (choiceOne, choiceTwo)=>{
+            switch (choiceOne){
+                case "rock":
+                    if (choiceTwo === "scissors"){
+                        return 1;
+                    }else if (choiceTwo === choiceOne){
+                        return 0;
+                    }else if (choiceTwo === "paper"){
+                        return -1;
+                    }
+                case "paper":
+                    if (choiceTwo === "rock"){
+                        return 1;
+                    }else if (choiceTwo === choiceOne){
+                        return 0;
+                    }else if (choiceTwo === "scissors"){
+                        return -1;
+                    }
+                case "scissors":
+                    if (choiceTwo === "paper"){
+                        return 1;
+                    }else if (choiceTwo === choiceOne){
+                        return 0;
+                    }else if (choiceTwo === "rock"){
+                        return -1;
+                    }
+            } 
+        }
+
+        let winnerNotice = ``;
+        if (rules(humanChoice, computerChoice) === 1){
+            winnerNotice = `You win! ${humanChoice} beats ${computerChoice}`;
+            humanScore++;
+        }else if (rules(humanChoice, computerChoice) === -1){
+            winnerNotice = `You lose! ${computerChoice} beats ${humanChoice}`;
+            computerScore++;
+        }else{
+            winnerNotice = `It's a tie!`;
+        }
+        
+        console.log(winnerNotice);
+
     }
 
-    let winnerNotice = ``;
-    if (rules(humanChoice, computerChoice) === 1){
-        winnerNotice = `You win! ${humanChoice} beats ${computerChoice}`;
-        humanScore++;
-    }else if (rules(humanChoice, computerChoice) === -1){
-        winnerNotice = `You lose! ${computerChoice} beats ${humanChoice}`;
-        computerScore++;
-    }else{
-        winnerNotice = `It's a tie!`;
-    }
-    
-    console.log(winnerNotice);
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
 
+    for (let i=0; i<5; i++){
+        playRound(humanSelection, computerSelection);
+    }
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-playRound(humanSelection, computerSelection);
-
+playGame();

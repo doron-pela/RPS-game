@@ -72,11 +72,12 @@ const playGame = ()=>{
 
     }
 
-    const humanSelection = getHumanChoice();
-    const computerSelection = getComputerChoice();
-
     for (let i=0; i<5; i++){
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+        
         playRound(humanSelection, computerSelection);
+        console.log(`Score: You - ${humanScore}, Computer - ${computerScore}`);
     }
 }
 
